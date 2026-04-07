@@ -1892,8 +1892,6 @@ class Qwen2_5_VLForConditionalGeneration(Qwen2_5_VLPreTrainedModel, GenerationMi
             elif now_mode == 'original':
                 logits = self.lm_head(hidden_states)
             
-            
-
             else:
                 raise ValueError(f"Unknown mode: {now_mode}")
         
@@ -2195,9 +2193,6 @@ class My_Inference_Former(nn.Module):
     def forward(self, text_token, vision_token_list, now_sample_id=None):
         
         
-        # assert now_sample_id is not None
-        # print(vision_token_list[now_sample_id].shape). # torch.Size([144, 3584])
-        
         if now_sample_id is not None:
             vision_token = vision_token_list[now_sample_id].unsqueeze(0)
             padding_mask = None
@@ -2281,7 +2276,7 @@ class UnifiedCrossAttentionLayer_with_null_vision_token(nn.Module):
         if 'with_null_vision_token' in self.config.my_decoder_mode:
             k_null_batch = self.k_null.expand(batch_size, -1, -1)
             v_null_batch = self.v_null.expand(batch_size, -1, -1)
-            # TODO: 因为padding是后面的，所以考虑将null-token放在最前面 
+       
             
             k_null_norm = self.norm_null(k_null_batch)
             v_null_norm = self.norm_null(v_null_batch)  

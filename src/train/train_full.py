@@ -64,7 +64,7 @@ def configure_llm(model, training_args):
 def configure_llm_head(model, training_args):
     lm_head = model.lm_head.parameters()
     set_requires_grad(lm_head, not training_args.freeze_llm_head)
-    # print('lm_head:',model.lm_head)
+
 
 
 def configure_inf_former(model, training_args):

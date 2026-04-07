@@ -150,47 +150,12 @@ class QwenTrainer(Trainer):
                     },
                 ]
             optimizer_cls, optimizer_kwargs = Trainer.get_optimizer_cls_and_kwargs(self.args)
-            # print('self.args.merger_lr:', self.args.merger_lr)  #  1e-05
-            # print('self.args.vision_lr:', self.args.vision_lr)  # 2e-6
-            # print('self.args.weight_decay:', self.args.weight_decay) # 0.1
-            # print('optimizer_cls:', optimizer_cls)  # <class 'torch.optim.adamw.AdamW'>
-            # print('optimizer_kwargs:', optimizer_kwargs)   #  {'lr': 1e-05, 'betas': (0.9, 0.999), 'eps': 1e-08}
-            # print('optimizer_grouped_parameters:', optimizer_grouped_parameters)
-            
-     
-            # params_in_groups = set()
-            # for group in optimizer_grouped_parameters:
-            #     for param in group['params']:
-            #         param_id = id(param)
-            #         if param_id in params_in_groups:
-            #             # 为了定位是哪个参数，可以尝试找到它的名字（如果可能）
-            #             for name, p in self.model.named_parameters():
-            #                 if id(p) == param_id:
-            #                     print(f"发现重复参数: {name}")
-            #                     break
-            #         params_in_groups.add(param_id)
+          
  
             self.optimizer = optimizer_cls(optimizer_grouped_parameters, **optimizer_kwargs)
             
- 
-            
-            # param_to_check = self.model.inference_former.blocks[1].v_fusion_scale # 这是一个示例路径，您需要换成自己的
-            # def grad_hook(grad):
-            #     # print("="*10)
-            #     if grad is not None:
-            #         if torch.distributed.get_rank() == 0:
-            #         # 打印梯度的值，如果它很小但非0，说明在学习，只是学习慢
-            #             print(f"HOOK 发现 visual_fusion_scale 的梯度: {grad}")
-            #     else:
-            #         if torch.distributed.get_rank() == 0:
-            #             print("HOOK 发现 visual_fusion_scale 的梯度为 None!")
-            #     # print("="*10)
-                
-            # param_to_check.register_hook(grad_hook)
-            
-            
+
    
-            # assert False
             if optimizer_cls.__name__ == "Adam8bit":
                 import bitsandbytes
 
