@@ -71,7 +71,7 @@ def configure_inf_former(model, training_args):
     
     if 'share_head' not in training_args.adapter_mode:
         lm_head_former = model.lm_head_former.parameters()
-        set_requires_grad(lm_head_former, not training_args.freeze_inf_former)  # TODO:
+        set_requires_grad(lm_head_former, not training_args.freeze_inf_former)  
 
 
     inference_former_params = model.inference_former.parameters()
