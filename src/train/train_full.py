@@ -110,8 +110,8 @@ def train():
 
     if training_args.adapter_mode == 'no_adapter':
         from transformers import  Qwen2_5_VLForConditionalGeneration
-    elif training_args.adapter_mode == 'self+cross_share_head_liner_gate':
-        from train.qwen_vl_re_see_vision_old_param_null_token_share_head_rebuttal_gate.modeling_qwen_vl import Qwen2_5_VLForConditionalGeneration
+    elif training_args.adapter_mode == 'self+cross_share_head':
+        from train.qwen_vl_re_see_vision_old_param_null_token_share_head.modeling_qwen_vl import Qwen2_5_VLForConditionalGeneration
     else:
         assert False
         

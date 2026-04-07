@@ -148,7 +148,7 @@ NUM_DEVICES=8
 GRAD_ACCUM_STEPS=$((GLOBAL_BATCH_SIZE / (BATCH_PER_DEVICE * NUM_DEVICES)))
 
 MODEL_NAME="Qwen2.5-VL-7B-Instruct"
-NOW_MODE='last_hidden_state_merge-with_null_vision_token-for_cycle-x-2-v2'    # 'last_hidden_state_merge' or 'logist_merge' or 'only_former_logist'
+NOW_MODE='last_hidden_state_merge-with_null_vision_token-for_cycle-x-2-v2' 
 TRAIN_FILE_NAME=my_train_data/Cambrian
 
 DATA_PATH="/data/dongxinpeng/datasets/$TRAIN_FILE_NAME.json"
