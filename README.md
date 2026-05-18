@@ -1,4 +1,4 @@
-# Vision Inference Former: Sustaining Visual Consistency in Multimodal Large Language Models 【CVPR 2026 Findings】
+# Vision Inference Former: Sustaining Visual Consistency in Multimodal Large Language Models [CVPR 2026 Findings]
 
 ![arc](arc.png)
 
